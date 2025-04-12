@@ -1,8 +1,28 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
+
 
 const Home = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [email, setEmail] = useState(localStorage.getItem("userEmail") || "");
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+
+    if (!email) {
+      let userEmail = "";
+
+      while (true) {
+        userEmail = window.prompt("Please enter your email to continue:");
+        if (userEmail === null) {
+          alert("Email is required to continue.");
+        } else if (isValidEmail(userEmail)) {
+          localStorage.setItem("userEmail", userEmail);
+          setEmail(userEmail);
+          break;
+        } else {
+          alert("Please enter a valid email address.");
+        }
+      }
+    }
 
   return (
     <div style={styles.container}>

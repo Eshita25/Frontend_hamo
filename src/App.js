@@ -7,17 +7,19 @@ import Footer from "./components/footer";
 import Pulse from "./components/pulse";
 import './App.css'
 import SOS from "./components/sos";
+import UploadPage from "./components/UploadPage";
 
 const App = () => {
   return (
     <div className="App">
     <Router>
-      <Navbar />
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/medicine" element={<Medicine/>}/>
         <Route path="/pulse" element={<Pulse/>}/>
         <Route path="/send" element={<SOS/>}/>
+        <Route path="/upload" element={<UploadPage />} />
       </Routes>
       <Footer/>
     </Router>
