@@ -8,7 +8,7 @@ const SOS = () => {
     e.preventDefault(); // prevent form reload
 
     try {
-      await axios.post("/send-email", {
+      await axios.post("https://backend-cdcd.onrender.com/send-email", {
         to: userId,
         subject: "SOS",
       text: "This is an SOS mail",
