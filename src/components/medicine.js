@@ -31,7 +31,6 @@ const Medicine = () => {
         createdAt: new Date().toISOString(),
       });
   
-      // 🔥 ALSO update /examples/GetDataDemo
       const getDataDemoRef = ref(db, "/examples/GetDataDemo");
       const getDataDemoPayload = {};
       filteredMedicines.forEach((med, index) => {
@@ -93,18 +92,18 @@ console.log(data);
             <span>{med.name}</span>
             <input
               type="text"
-              placeholder="Time"
+              placeholder="Time-format: hh:mm:ss"
               value={med.time}
               onChange={(e) => handleChange(index, "time", e.target.value)}
               style={styles.input}
             />
-            <input
+            {/*<input
               type="number"
               placeholder="Qty"
               value={med.qty}
               onChange={(e) => handleChange(index, "qty", e.target.value)}
               style={styles.input}
-            />
+        />*/}
           </div>
         ))}
 
