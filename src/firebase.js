@@ -6,15 +6,16 @@ import {getDatabase} from "firebase/database";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDZLtBOpwaSWC9zywQcLGr8UnwBuzqUR-U",
-  authDomain: "hamo-94122.firebaseapp.com",
-  databaseURL: "https://hamo-94122-default-rtdb.firebaseio.com",
-  projectId: "hamo-94122",
-  storageBucket: "hamo-94122.firebasestorage.app",
-  messagingSenderId: "90201662046",
-  appId: "1:90201662046:web:4d148c2f0c621b33aa4acf",
-  measurementId: "G-T1MBVVCD20"
+  apiKey: "AIzaSyDRo2lU-0Pi-Ze6pQvgglxbUZsuT05IRJU",
+  authDomain: "hamo102.firebaseapp.com",
+  databaseURL: "https://hamo102-default-rtdb.firebaseio.com",
+  projectId: "hamo102",
+  storageBucket: "hamo102.firebasestorage.app",
+  messagingSenderId: "669360629660",
+  appId: "1:669360629660:web:abba625473691b3a1bca59",
+  measurementId: "G-CK9ERCWREY"
 };
 
 // Initialize Firebase

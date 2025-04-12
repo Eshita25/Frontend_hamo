@@ -8,7 +8,7 @@ const Pulse = () => {
     useEffect(()=>{
     const fetchData = async () => {
       
-      const set3Ref = ref(db, '/examples');
+      const set3Ref = ref(db, '/examples/GetDataDemo');
 
     
       try {
