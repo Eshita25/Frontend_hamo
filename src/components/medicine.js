@@ -62,10 +62,13 @@ const Medicine = () => {
 
       if (snapshot.exists()) {
         const data = snapshot.val();
-        const allEntries = Object.values(data).map((entry) => entry.medicines);
-        console.log(allEntries);
-const latestEntry = allEntries[allEntries.length - 1];
-setFetchedData(latestEntry || []);
+        const formatted = Object.entries(data).map(([key, time]) => ({
+          name: key,
+          time,
+        }));
+        
+setFetchedData(formatted);
+console.log(data);
       } else {
         setFetchedData([]);
       }
@@ -111,20 +114,11 @@ setFetchedData(latestEntry || []);
       {/* Medicine Schedule Display */}
       <div style={{ marginTop: "1rem", textAlign: "left" }}>
         <h3>Medicine Schedule</h3>
-        {fetchedData.length === 0 ? (
-          <p>No data available</p>
-        ) : (
-          <>
-          <div>
-  {fetchedData.map((med, index) => (
+        {fetchedData.map((med, index) => (
     <div key={index}>
-      <strong>{med.name}</strong> — Time: {med.time}, Qty: {med.qty}
+      <strong>{med.name}:</strong> {med.time}
     </div>
   ))}
-</div>
-
-          </>
-        )}
       </div>
     </div>
   );
