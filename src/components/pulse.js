@@ -4,12 +4,12 @@ const Pulse = () => {
   const [HeartRate, setHeartRate] = useState({});
   const [spo2, setSpo2] = useState({});
 
-  useEffect(() => {
-    // Simulate random data
-    const generateDummyData = () => {
-      const heartRateData = {};
-      const spo2Data = {};
-      const now = new Date();
+
+    useEffect(()=>{
+    const fetchData = async () => {
+      
+      const set3Ref = ref(db, '/examples/GetDataDemo');
+
 
       for (let i = 0; i < 10; i++) {
         const timestamp = new Date(now - i * 60000).toISOString().slice(0, 19).replace("T", " ");

@@ -20,37 +20,50 @@ const Medicine = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const medicineRef = ref(db, "/halwa");
       const newMedicineRef = push(medicineRef);
+      const filteredMedicines = medicines.filter((med) => med.qty || med.time);
+  
       await set(newMedicineRef, {
-        medicines: medicines.filter((med) => med.qty || med.time),
+        medicines: filteredMedicines,
         createdAt: new Date().toISOString(),
       });
+  
+      // 🔥 ALSO update /examples/GetDataDemo
+      const getDataDemoRef = ref(db, "/examples/GetDataDemo");
+      const getDataDemoPayload = {};
+      filteredMedicines.forEach((med, index) => {
+        getDataDemoPayload[`Slot_${index + 1}`] = med.time;
+      });
+  
+      await set(getDataDemoRef, getDataDemoPayload);
+  
       alert("Medicines Added!");
-
+  
       setMedicines([
-        { name: "Medicine1", time: "" },
-        { name: "Medicine2",  time: "" },
-        { name: "Medicine3",  time: "" },
-        { name: "Medicine4", time: "" },
+        { name: "Slot_1", time: "" },
+        { name: "Slot_2", time: "" },
+        { name: "Slot_3", time: "" },
+        { name: "Slot_4", time: "" },
       ]);
-
+  
       fetchData();
     } catch (error) {
       alert("Error adding medicines: " + error.message);
     }
   };
-
+  
   const fetchData = async () => {
     try {
-      const medicineRef = ref(db, "/halwa");
+      const medicineRef = ref(db, "/examples/GetDataDemo");
       const snapshot = await get(medicineRef);
 
       if (snapshot.exists()) {
         const data = snapshot.val();
         const allEntries = Object.values(data).map((entry) => entry.medicines);
+        console.log(allEntries);
 const latestEntry = allEntries[allEntries.length - 1];
 setFetchedData(latestEntry || []);
       } else {
